@@ -62,6 +62,13 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           
+      - name: Update Config
+        run: |
+          rm -rf .config
+          rm -rf .diffconfig
+          wget https://raw.githubusercontent.com/ozdroid/build/main/.config
+          wget https://raw.githubusercontent.com/ozdroid/build/main/.diffconfig
+          
       - name: Generate configuration file
         run: make defconfig
 
